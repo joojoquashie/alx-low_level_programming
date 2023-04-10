@@ -32,8 +32,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	buffer = malloc(sizeof(char) * letters + 1);
 	if (buffer == NULL)
 	{
-		return (0);
 		close(fd);
+		return (0);
 	}
 
 	jread = read(fd, buffer, letters);
