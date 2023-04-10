@@ -22,32 +22,32 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t jread, jwrite;
 
 	if (filename == NULL)
-		return 0;
+		return (0);
 
 	fd = open(filename, O_RDONLY);
 
 	if (fd == -1)
-		return 0;
+		return (0);
 
 	buffer = malloc(sizeof(char) * letters + 1);
 	if (buffer == NULL)
 	{
-		return 0;
+		return (0);
 		close(fd);
 	}
 
 	jread = read(fd, buffer, letters);
 	close(fd);
 	if (jread == -1)
-		return 0;
+		return (0);
 	{
 		free(buffer);
-		return 0;
+		return (0);
 	}
 
 	jwrite = write(STDOUT_FILENO, buffer, jread);
 	free(buffer);
 	if (jread != jwrite)
-		return 0;
+		return (0);
 	return (jwrite);
 }
