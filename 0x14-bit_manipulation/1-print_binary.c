@@ -9,16 +9,18 @@
 
 void print_binary(unsigned long int n)
 {
-	if (n >> 0)
+	int in, i;
+	unsigned long int li;
+
+	in = 0;
+	for (i = 63; i >= 0; i--)
 	{
-		if (n >> 1)
-		{
-			print_binary(n >> 1);
-		_putchar((n & 1) + '0');
-		}
+		li = (n >> i) & 1;
+		if (li == 1)
+			in = 1;
+		if (in == 1)
+			_putchar(((n >> i) & 1) + '0');
 	}
-	else
-	{
+	if (n == 0)
 		_putchar('0');
-	}
 }
